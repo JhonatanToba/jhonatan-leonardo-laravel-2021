@@ -18,7 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("testEmpresas", function(){
+//Para comentariar varias lineas de codigo se puede usar con alt + shift + A
+/* Route::get("testEmpresas", function(){
     $empresa = Empresa::where("nit", 745039)->first();
     dd($empresa->empleados);
 });
@@ -83,5 +84,5 @@ Route::get("Listado-de-a", function(){
 Route::get("lugar-nacimiento-c", function(){
     $empleado = Empleado::where("lugar_nacimiento", "like", "c%")->orderBy("lugar_nacimiento")->get();
     dd($empleado);
-});
+}); */
 

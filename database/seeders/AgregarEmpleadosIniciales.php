@@ -15,7 +15,7 @@ class AgregarEmpleadosIniciales extends Seeder
      */
     public function run()
     {
-        /*$faker = Faker::create("es_ES");
+        $faker = Faker::create("es_ES");
         for ($i=0; $i < 100; $i++) { 
             DB::table("empleados")->insert([
                 "created_at" => date("Y-m-d H:m:s"),
@@ -29,9 +29,9 @@ class AgregarEmpleadosIniciales extends Seeder
                 "estado"=> $faker -> randomElement(["contratado","suspendido","prueba"]),
                 "empresa_id" => $faker -> numberBetween(1,20)
             ]);
-        }*/
+        }
 
-        empleados::factory(10)->create();
+        //empleados::factory(10)->create();
         
     }
 }
