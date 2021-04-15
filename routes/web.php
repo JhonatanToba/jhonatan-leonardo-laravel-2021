@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\models\empresa;
 use App\models\empleado;
+use App\Http\Controllers\EmpleadosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +15,31 @@ use App\models\empleado;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::resource("empleado", EmpleadosController::class);
+
+/* Route::get('/', function () {
+    $empleados = Empleado::all();
+    return view('pages.home', compact("empleados"));
 });
 
+Route::get('/contact', function () {
+    return view('pages.contact');
+});
+
+Route::get("/empleado/{idEmpleado}", function ($idEmpleado = 1){
+    $empleado = Empleado::where("id", $idEmpleado)->get();
+    dd($empleado);
+});
+
+Route::get("/empleado/codigo/{codEmpleado}", function ($codEmpleado = 1){
+    $empleado = Empleado::where("codigo", $codEmpleado)->get();
+    dd($empleado);
+});
+
+Route::get("/empleado", function(){
+    $empleados = Empleado::all();
+    return view("ejemplo", compact("empleados"));
+}); */
 //Para comentariar varias lineas de codigo se puede usar con alt + shift + A
 /* Route::get("testEmpresas", function(){
     $empresa = Empresa::where("nit", 745039)->first();

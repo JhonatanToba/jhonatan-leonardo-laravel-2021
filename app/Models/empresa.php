@@ -10,6 +10,6 @@ class empresa extends Model
     use HasFactory;
 
     public function empleados(){
-        return $this->hasMany(Empleado::Class);
+        return $this->hasMany(Empleado::class);
     }
 }

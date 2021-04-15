@@ -10,6 +10,6 @@ class empleado extends Model
     use HasFactory;
 
     public function empresa(){
-        return $this->belongsTo(Empresa::Class);
+        return $this->belongsTo(Empresa::class);
     }
 }
