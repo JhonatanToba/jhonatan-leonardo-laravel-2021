@@ -25,7 +25,7 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        //
+        return view ("components.empleados.create");
     }
 
     /**
@@ -36,7 +36,18 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nuevo = New empleado;
+        $nuevo->codigo = $request->codigo;
+        $nuevo->nombre = $request->nombre;
+        $nuevo->lugar_nacimiento = $request->lugar_nacimiento;
+        $nuevo->fecha_nacimiento = $request->fecha_nacimiento;
+        $nuevo->telefono = $request->telefono;
+        $nuevo->cargo = $request->cargo;
+        $nuevo->empresa_id = $request->empresa_id;
+        
+        $nuevo->save();
+
+        return redirect()->route("empleado.index");
     }
 
     /**
@@ -58,7 +69,7 @@ class EmpleadosController extends Controller
      */
     public function edit(empleado $empleado)
     {
-        //
+        return view ("components.empleados.edit", ["empleado"=> $empleado]);
     }
 
     /**
@@ -70,7 +81,21 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, empleado $empleado)
     {
-        //
+
+        $empleado= empleado::find($empleado->id);
+        $empleado->codigo = $request->codigo;
+        $empleado->nombre = $request->nombre;
+        $empleado->lugar_nacimiento = $request->lugar_nacimiento;
+        $empleado->fecha_nacimiento = $request->fecha_nacimiento;
+        $empleado->telefono = $request->telefono;
+        $empleado->cargo = $request->cargo;
+        $empleado->estado = $request->estado;
+
+        $empleado->save();
+
+        return redirect()->route("empleado.index");
+
+
     }
 
     /**
@@ -81,7 +106,24 @@ class EmpleadosController extends Controller
      */
     public function destroy(empleado $empleado)
     {
-        dd($empleado);
-        return view ("components.empleados.delete", ["empleado"=> $empleado]);
+        
+        $empleado->delete();
+        return redirect()->route("empleado.index");
     }
+
+    /* $productosActuales= $request->session()->get("carrito.productos");
+
+    if(count($productosActuales)<0){
+        foreach ($productosActuales as $index => $producto) {
+            if ($producto["producto"->id == $productSelected->id]) {
+                $productSelected[$index]["cantidad"] += $amount;
+            $request->session()->put("carrito.productos",$productSelected);
+            } else {
+                $request->session()->push("carrito.productos",["producto"=>$productSelected,"cantidad"=>$amount]);
+            }
+            
+        }
+    }else{
+        $request->session()->push("carrito.productos",["producto"=>$productSelected, "cantidad"=> $amount]);
+    } */
 }
